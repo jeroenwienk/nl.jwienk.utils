@@ -1,0 +1,104 @@
+{
+  "triggers": [
+    {
+      "id": "trigger_timer_end",
+      "title": {
+        "en": "Timer is finished...",
+        "nl": "Timer is afgelopen..."
+      },
+      "titleFormatted": {
+        "en": "Timer is finished",
+        "nl": "Timer is afgelopen"
+      },
+      "hint": {
+        "en": "Fires when the timer has finished.",
+        "nl": "Activeert wanneer de timer afgelopen is."
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "id": "condition_timer_running",
+      "title": {
+        "en": "Timer !{{is|isn't}} running...",
+        "nl": "Timer loopt !{{|niet}}..."
+      },
+      "titleFormatted": {
+        "en": "Timer !{{is|isn't}} running",
+        "nl": "Timer loopt !{{|niet}}"
+      }
+    },
+    {
+      "id": "condition_timer_paused",
+      "title": {
+        "en": "Timer !{{is|isn't}} paused...",
+        "nl": "Timer !{{is|is niet}} gepauzeerd..."
+      },
+      "titleFormatted": {
+        "en": "Timer !{{is|isn't}} paused",
+        "nl": "Timer !{{is|is niet}} gepauzeerd"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "action_timer_start",
+      "title": {
+        "en": "Start timer with duration...",
+        "nl": "Start timer met duur..."
+      },
+      "titleFormatted": {
+        "en": "Start timer with duration [[timer_duration]]",
+        "nl": "Start timer met duur [[timer_duration]]"
+      },
+      "hint": {
+        "en": "Start a timer with a duration in milliseconds. If the timer is already running or paused it is replaced.",
+        "nl": "Start een timer met een duur in milliseconden. Als de timer al loopt of gepauzeerd is wordt deze vervangen."
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "timer_duration",
+          "title": {
+            "en": "Duration",
+            "nl": "Duur"
+          },
+          "placeholder": {
+            "en": "in milliseconds",
+            "nl": "in milliseconden"
+          }
+        }
+      ]
+    },
+    {
+      "id": "action_timer_pause",
+      "title": {
+        "en": "Pause timer...",
+        "nl": "Pauzeer timer..."
+      },
+      "titleFormatted": {
+        "en": "Pause timer",
+        "nl": "Pauzeer timer"
+      },
+      "hint": {
+        "en": "Pause a running timer.",
+        "nl": "Pauzeer een lopende timer."
+      }
+    },
+    {
+      "id": "action_timer_resume",
+      "title": {
+        "en": "Resume timer...",
+        "nl": "Hervat timer..."
+      },
+      "titleFormatted": {
+        "en": "Resume timer",
+        "nl": "Hervat timer"
+      },
+      "hint": {
+        "en": "Resume a paused timer.",
+        "nl": "Hervat een gepauseerde timer."
+      }
+    }
+  ]
+}

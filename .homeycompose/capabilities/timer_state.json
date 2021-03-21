@@ -1,0 +1,36 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "State",
+    "nl": "Staat"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "uiQuickAction": false,
+  "icon": "/assets/timer_state.svg",
+  "insights": false,
+  "values": [
+    {
+      "id": "idle",
+      "title": {
+        "en": "Idle",
+        "nl": "Inactief"
+      }
+    },
+    {
+      "id": "running",
+      "title": {
+        "en": "Running",
+        "nl": "Loopt"
+      }
+    },
+    {
+      "id": "paused",
+      "title": {
+        "en": "Paused",
+        "nl": "Gepauzeerd"
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "nl.jwienk.utils",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": {
+    "en": "Utils",
+    "nl": "Gereedschap"
+  },
+  "description": {
+    "en": "Utils",
+    "nl": "Gereedschap"
+  },
+  "brandColor": "#00B0FF",
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Jeroen Wienk",
+    "email": "jeroenwienk@gmail.com"
+  }
+}

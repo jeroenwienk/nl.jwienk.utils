@@ -1,0 +1,8 @@
+{
+  "timer": {
+    "duration": {
+      "type": "Duration type must be a number, received: __value__",
+      "positive": "Duration must be a positive number, received: __value__"
+    }
+  }
+}

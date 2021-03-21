@@ -1,0 +1,8 @@
+{
+  "timer": {
+    "duration": {
+      "type": "Duur moet een nummer zijn: __value__",
+      "positive": "Duur moet een positief nummer zijn: __value__"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "timer",
+  "name": {
+    "en": "Timer",
+    "nl": "Timer"
+  },
+  "class": "other",
+  "capabilities": ["timer_duration", "timer_state"],
+  "capabilitiesOptions": {
+    "timer_duration": {
+      "preventTag": true
+    }
+  },
+  "energy": {},
+  "images": {
+    "large": "/drivers/timer/assets/images/large.png",
+    "small": "/drivers/timer/assets/images/small.png"
+  },
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_my_devices"
+      },
+      "options": {
+        "singular": true
+      }
+    },
+    {
+      "id": "add_my_devices",
+      "template": "add_devices"
+    }
+  ],
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "en": "General settings"
+      },
+      "children": [
+        {
+          "id": "duration_update_interval",
+          "type": "number",
+          "label": {
+            "en": "Duration update interval",
+            "nl": "Duur update interval"
+          },
+          "hint": {
+            "en": "Interval duration for updating the duration capability.",
+            "nl": "Interval duur voor het updaten van de duur capability."
+          },
+          "value": 1000,
+          "min": 100,
+          "max": 60000,
+          "units": {
+            "en": "ms",
+            "nl": "ms"
+          }
+        }
+      ]
+    }
+  ]
+}
