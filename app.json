@@ -124,6 +124,28 @@
         ]
       },
       {
+        "id": "action_timer_stop",
+        "title": {
+          "en": "Stop timer...",
+          "nl": "Stop timer..."
+        },
+        "titleFormatted": {
+          "en": "Stop timer",
+          "nl": "Stop timer"
+        },
+        "hint": {
+          "en": "Stop a running or paused timer.",
+          "nl": "Stop een lopende of gepauzeerde timer."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=timer"
+          }
+        ]
+      },
+      {
         "id": "action_timer_pause",
         "title": {
           "en": "Pause timer...",

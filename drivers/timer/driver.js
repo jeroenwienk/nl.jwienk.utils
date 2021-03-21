@@ -9,6 +9,7 @@ class TimerDriver extends Homey.Driver {
     condition_timer_running: 'condition_timer_running',
     condition_timer_paused: 'condition_timer_paused',
     action_timer_start: 'action_timer_start',
+    action_timer_stop: 'action_timer_stop',
     action_timer_pause: 'action_timer_pause',
     action_timer_resume: 'action_timer_resume',
   };
@@ -20,6 +21,7 @@ class TimerDriver extends Homey.Driver {
     this.registerConditionTimerRunning();
     this.registerConditionTimerPaused();
     this.registerActionTimerStart();
+    this.registerActionTimerStop();
     this.registerActionTimerPause();
     this.registerActionTimerResume();
   }
@@ -76,6 +78,17 @@ class TimerDriver extends Homey.Driver {
       await args.device.startTimer({
         duration: args.timer_duration,
       });
+      return true;
+    });
+  }
+
+  registerActionTimerStop() {
+    this.actionTimerStop = this.homey.flow.getActionCard(
+      TimerDriver.flow.action_timer_stop
+    );
+
+    this.actionTimerStop.registerRunListener(async (args, state) => {
+      await args.device.stopTimer();
       return true;
     });
   }

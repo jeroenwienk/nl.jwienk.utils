@@ -89,6 +89,19 @@ class TimerDevice extends Homey.Device {
     this.startOrResume();
   }
 
+  async stopTimer() {
+    if (this.state === 'running' || this.state === 'paused') {
+      this.clear();
+
+      this.state = 'idle';
+      this.duration = 0;
+      this.durationEnd = null;
+
+      await this.setCapabilityValue('timer_state', this.state);
+      await this.setCapabilityValue('timer_duration', this.duration);
+    }
+  }
+
   async pauseTimer() {
     if (this.state === 'running') {
       this.clear();
