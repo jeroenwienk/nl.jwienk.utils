@@ -12,10 +12,8 @@
     "nl": "Gereedschap"
   },
   "brandColor": "#00B0FF",
-  "category": [
-    "tools"
-  ],
-  "permissions": [],
+  "category": ["tools"],
+  "permissions": ["homey:manager:api"],
   "images": {
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
