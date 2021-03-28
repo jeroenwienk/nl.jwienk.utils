@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <script
+      type="text/javascript"
+      src="/homey.js"
+      data-origin="settings"
+    ></script>
+  </head>
+  <body>
+    <h1 data-i18n="settings.title"></h1>
+
+    <fieldset>
+      <legend>Discord</legend>
+
+      <div class="field row">
+        <label for="discord_bot_token">Bot Token</label>
+        <input id="discord_bot_token" type="text" value="" />
+      </div>
+      <div class="field row">
+        <label for="discord_bot_guild_id">Bot Guild Id</label>
+        <input id="discord_bot_guild_id" type="text" value="" />
+      </div>
+    </fieldset>
+
+    <button id="save" class="right">Save changes</button>
+
+    <script type="text/javascript">
+      // a method named 'onHomeyReady' must be present in your code
+      function onHomeyReady(Homey) {
+        // Tell Homey we're ready to be displayed
+        Homey.ready();
+
+        const tokenElement = document.getElementById('discord_bot_token');
+        const guildElement = document.getElementById('discord_bot_guild_id');
+        const saveElement = document.getElementById('save');
+
+        Homey.get('discord_bot_token', function (err, discord_bot_token) {
+          if (err) return Homey.alert(err);
+          tokenElement.value = discord_bot_token;
+        });
+
+        Homey.get('discord_bot_guild_id', function (err, discord_bot_guild_id) {
+          if (err) return Homey.alert(err);
+          guildElement.value = discord_bot_guild_id;
+        });
+
+        saveElement.addEventListener('click', function (e) {
+          Homey.set('discord_bot_token', tokenElement.value, function (err) {
+            if (err) return Homey.alert(err);
+          });
+          Homey.set('discord_bot_guild_id', guildElement.value, function (err) {
+            if (err) return Homey.alert(err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

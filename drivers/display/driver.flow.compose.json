@@ -1,0 +1,94 @@
+{
+  "triggers": [
+    {
+      "id": "trigger_display_text_set",
+      "title": {
+        "en": "A text with titel is set...",
+        "nl": "Een tekst met titel wordt gezet..."
+      },
+      "titleFormatted": {
+        "en": "Text with title [[capability]] is set",
+        "nl": "Tekst met titel [[capability]] wordt gezet"
+      },
+      "tokens": [
+        {
+          "name": "title",
+          "type": "string",
+          "title": {
+            "en": "Title",
+            "nl": "Titel"
+          },
+          "example": {
+            "en": "MyTitle",
+            "nl": "MijnTitel"
+          }
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "title": {
+            "en": "Text",
+            "nl": "Tekst"
+          },
+          "example": {
+            "en": "Text",
+            "nl": "Tekst"
+          }
+        }
+      ],
+      "args": [
+        {
+          "type": "autocomplete",
+          "name": "capability",
+          "placeholder": {
+            "en": "Search for title...",
+            "nl": "Zoek naar een titel..."
+          },
+          "title": {
+            "en": "Title",
+            "nl": "Titel"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "action_display_text_set",
+      "title": {
+        "en": "Set a text...",
+        "nl": "Zet een tekst..."
+      },
+      "titleFormatted": {
+        "en": "Set a text with titel [[capability]] to [[content]]",
+        "nl": "Zet een teksts met titel [[capability]] naar [[content]]"
+      },
+      "args": [
+        {
+          "type": "text",
+          "name": "content",
+          "title": {
+            "en": "Text",
+            "nl": "Tekst"
+          },
+          "placeholder": {
+            "en": "",
+            "nl": ""
+          }
+        },
+        {
+          "type": "autocomplete",
+          "name": "capability",
+          "placeholder": {
+            "en": "Search for title...",
+            "nl": "Zoek naar een titel..."
+          },
+          "title": {
+            "en": "Title",
+            "nl": "Titel"
+          }
+        }
+      ]
+    }
+  ]
+}

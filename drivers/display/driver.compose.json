@@ -1,0 +1,75 @@
+{
+  "id": "display",
+  "name": {
+    "en": "Display",
+    "nl": "Display"
+  },
+  "class": "other",
+  "capabilities": ["text", "text.1", "text.2", "text.3"],
+  "images": {
+    "large": "/drivers/display/assets/images/large.png",
+    "small": "/drivers/display/assets/images/small.png"
+  },
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_my_devices"
+      },
+      "options": {
+        "singular": true
+      }
+    },
+    {
+      "id": "add_my_devices",
+      "template": "add_devices"
+    }
+  ],
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "en": "General settings"
+      },
+      "children": [
+        {
+          "id": "text",
+          "type": "text",
+          "label": {
+            "en": "Title",
+            "nl": "Titel"
+          },
+          "value": "-"
+        },
+        {
+          "id": "text.1",
+          "type": "text",
+          "label": {
+            "en": "Title",
+            "nl": "Titel"
+          },
+          "value": "-"
+        },
+        {
+          "id": "text.2",
+          "type": "text",
+          "label": {
+            "en": "Title",
+            "nl": "Titel"
+          },
+          "value": "-"
+        },
+        {
+          "id": "text.3",
+          "type": "text",
+          "label": {
+            "en": "Title",
+            "nl": "Titel"
+          },
+          "value": "-"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "title": {
+    "en": "Send a message to a Discord channel...",
+    "nl": "Stuur een bericht naar een Discord kanaal..."
+  },
+  "titleFormatted": {
+    "en": "Send a message [[content]] to Discord channel [[channel]]",
+    "nl": "Stuur een bericht [[content]] naar Discord kanaal [[channel]]"
+  },
+  "hint": {
+    "en": "Send a message to the selected Discord channel.",
+    "nl": "Stuur een bericht naar het geselecteerde Discord kanaal."
+  },
+  "args": [
+    {
+      "type": "text",
+      "name": "content",
+      "placeholder": {
+        "en": "Hello from Flow!",
+        "nl": "Hallo vanuit Flow!"
+      }
+    },
+    {
+      "type": "autocomplete",
+      "name": "channel",
+      "placeholder": {
+        "en": "Search for channels...",
+        "nl": "Zoek naar kanalen..."
+      },
+      "title": {
+        "en": "Channel",
+        "nl": "Kanaal"
+      }
+    }
+  ]
+}

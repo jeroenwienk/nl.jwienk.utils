@@ -1,0 +1,12 @@
+{
+  "type": "string",
+  "title": {
+    "en": "-"
+  },
+  "getable": true,
+  "setable": true,
+  "uiComponent": "sensor",
+  "uiQuickAction": false,
+  "icon": "/assets/capabilities/text.svg",
+  "insights": false
+}

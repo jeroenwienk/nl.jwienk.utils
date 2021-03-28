@@ -9,6 +9,6 @@
   "units": "ms",
   "uiComponent": "sensor",
   "uiQuickAction": false,
-  "icon": "/assets/timer_duration.svg",
+  "icon": "/assets/capabilities/timer_duration.svg",
   "insights": false
 }

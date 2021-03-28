@@ -8,7 +8,7 @@
   "setable": false,
   "uiComponent": "sensor",
   "uiQuickAction": false,
-  "icon": "/assets/timer_state.svg",
+  "icon": "/assets/capabilities/timer_state.svg",
   "insights": false,
   "values": [
     {

@@ -10,9 +10,6 @@ if (process.env.DEBUG === '1') {
 }
 
 class UtilsApp extends Homey.App {
-  /**
-   * onInit is called when the app is initialized.
-   */
   async onInit() {
     this.log('UtilsApp has been initialized');
 
@@ -23,7 +20,7 @@ class UtilsApp extends Homey.App {
       homeyAPI: this.homeyAPI,
     });
 
-    this.discordBot.init();
+    await this.discordBot.init();
   }
 }
 

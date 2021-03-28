@@ -28,69 +28,86 @@
     "email": "jeroenwienk@gmail.com"
   },
   "flow": {
-    "triggers": [
+    "actions": [
       {
-        "id": "trigger_timer_end",
         "title": {
-          "en": "Timer is finished...",
-          "nl": "Timer is afgelopen..."
+          "en": "Send a message to a Discord channel...",
+          "nl": "Stuur een bericht naar een Discord kanaal..."
         },
         "titleFormatted": {
-          "en": "Timer is finished",
-          "nl": "Timer is afgelopen"
+          "en": "Send a message [[content]] to Discord channel [[channel]]",
+          "nl": "Stuur een bericht [[content]] naar Discord kanaal [[channel]]"
         },
         "hint": {
-          "en": "Fires when the timer has finished.",
-          "nl": "Activeert wanneer de timer afgelopen is."
+          "en": "Send a message to the selected Discord channel.",
+          "nl": "Stuur een bericht naar het geselecteerde Discord kanaal."
         },
         "args": [
           {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=timer"
+            "type": "text",
+            "name": "content",
+            "placeholder": {
+              "en": "Hello from Flow!",
+              "nl": "Hallo vanuit Flow!"
+            }
+          },
+          {
+            "type": "autocomplete",
+            "name": "channel",
+            "placeholder": {
+              "en": "Search for channels...",
+              "nl": "Zoek naar kanalen..."
+            },
+            "title": {
+              "en": "Channel",
+              "nl": "Kanaal"
+            }
           }
-        ]
-      }
-    ],
-    "conditions": [
+        ],
+        "id": "action_discord_message_send"
+      },
       {
-        "id": "condition_timer_running",
+        "id": "action_display_text_set",
         "title": {
-          "en": "Timer !{{is|isn't}} running...",
-          "nl": "Timer loopt !{{|niet}}..."
+          "en": "Set a text...",
+          "nl": "Zet een tekst..."
         },
         "titleFormatted": {
-          "en": "Timer !{{is|isn't}} running",
-          "nl": "Timer loopt !{{|niet}}"
+          "en": "Set a text with titel [[capability]] to [[content]]",
+          "nl": "Zet een teksts met titel [[capability]] naar [[content]]"
         },
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=timer"
+            "filter": "driver_id=display"
+          },
+          {
+            "type": "text",
+            "name": "content",
+            "title": {
+              "en": "Text",
+              "nl": "Tekst"
+            },
+            "placeholder": {
+              "en": "",
+              "nl": ""
+            }
+          },
+          {
+            "type": "autocomplete",
+            "name": "capability",
+            "placeholder": {
+              "en": "Search for title...",
+              "nl": "Zoek naar een titel..."
+            },
+            "title": {
+              "en": "Title",
+              "nl": "Titel"
+            }
           }
         ]
       },
-      {
-        "id": "condition_timer_paused",
-        "title": {
-          "en": "Timer !{{is|isn't}} paused...",
-          "nl": "Timer !{{is|is niet}} gepauzeerd..."
-        },
-        "titleFormatted": {
-          "en": "Timer !{{is|isn't}} paused",
-          "nl": "Timer !{{is|is niet}} gepauzeerd"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=timer"
-          }
-        ]
-      }
-    ],
-    "actions": [
       {
         "id": "action_timer_start",
         "title": {
@@ -191,9 +208,207 @@
           }
         ]
       }
+    ],
+    "triggers": [
+      {
+        "id": "trigger_display_text_set",
+        "title": {
+          "en": "A text with titel is set...",
+          "nl": "Een tekst met titel wordt gezet..."
+        },
+        "titleFormatted": {
+          "en": "Text with title [[capability]] is set",
+          "nl": "Tekst met titel [[capability]] wordt gezet"
+        },
+        "tokens": [
+          {
+            "name": "title",
+            "type": "string",
+            "title": {
+              "en": "Title",
+              "nl": "Titel"
+            },
+            "example": {
+              "en": "MyTitle",
+              "nl": "MijnTitel"
+            }
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "title": {
+              "en": "Text",
+              "nl": "Tekst"
+            },
+            "example": {
+              "en": "Text",
+              "nl": "Tekst"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=display"
+          },
+          {
+            "type": "autocomplete",
+            "name": "capability",
+            "placeholder": {
+              "en": "Search for title...",
+              "nl": "Zoek naar een titel..."
+            },
+            "title": {
+              "en": "Title",
+              "nl": "Titel"
+            }
+          }
+        ]
+      },
+      {
+        "id": "trigger_timer_end",
+        "title": {
+          "en": "Timer is finished...",
+          "nl": "Timer is afgelopen..."
+        },
+        "titleFormatted": {
+          "en": "Timer is finished",
+          "nl": "Timer is afgelopen"
+        },
+        "hint": {
+          "en": "Fires when the timer has finished.",
+          "nl": "Activeert wanneer de timer afgelopen is."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=timer"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "condition_timer_running",
+        "title": {
+          "en": "Timer !{{is|isn't}} running...",
+          "nl": "Timer loopt !{{|niet}}..."
+        },
+        "titleFormatted": {
+          "en": "Timer !{{is|isn't}} running",
+          "nl": "Timer loopt !{{|niet}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=timer"
+          }
+        ]
+      },
+      {
+        "id": "condition_timer_paused",
+        "title": {
+          "en": "Timer !{{is|isn't}} paused...",
+          "nl": "Timer !{{is|is niet}} gepauzeerd..."
+        },
+        "titleFormatted": {
+          "en": "Timer !{{is|isn't}} paused",
+          "nl": "Timer !{{is|is niet}} gepauzeerd"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=timer"
+          }
+        ]
+      }
     ]
   },
   "drivers": [
+    {
+      "id": "display",
+      "name": {
+        "en": "Display",
+        "nl": "Display"
+      },
+      "class": "other",
+      "capabilities": [
+        "text",
+        "text.1",
+        "text.2",
+        "text.3"
+      ],
+      "images": {
+        "large": "/drivers/display/assets/images/large.png",
+        "small": "/drivers/display/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "General settings"
+          },
+          "children": [
+            {
+              "id": "text",
+              "type": "text",
+              "label": {
+                "en": "Title",
+                "nl": "Titel"
+              },
+              "value": "-"
+            },
+            {
+              "id": "text.1",
+              "type": "text",
+              "label": {
+                "en": "Title",
+                "nl": "Titel"
+              },
+              "value": "-"
+            },
+            {
+              "id": "text.2",
+              "type": "text",
+              "label": {
+                "en": "Title",
+                "nl": "Titel"
+              },
+              "value": "-"
+            },
+            {
+              "id": "text.3",
+              "type": "text",
+              "label": {
+                "en": "Title",
+                "nl": "Titel"
+              },
+              "value": "-"
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "timer",
       "name": {
@@ -263,6 +478,18 @@
     }
   ],
   "capabilities": {
+    "text": {
+      "type": "string",
+      "title": {
+        "en": "-"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/capabilities/text.svg",
+      "insights": false
+    },
     "timer_duration": {
       "type": "number",
       "title": {
@@ -274,7 +501,7 @@
       "units": "ms",
       "uiComponent": "sensor",
       "uiQuickAction": false,
-      "icon": "/assets/timer_duration.svg",
+      "icon": "/assets/capabilities/timer_duration.svg",
       "insights": false
     },
     "timer_state": {
@@ -287,7 +514,7 @@
       "setable": false,
       "uiComponent": "sensor",
       "uiQuickAction": false,
-      "icon": "/assets/timer_state.svg",
+      "icon": "/assets/capabilities/timer_state.svg",
       "insights": false,
       "values": [
         {
