@@ -417,11 +417,11 @@
       },
       "class": "other",
       "capabilities": [
-        "timer_duration",
+        "meter_timer_duration",
         "timer_state"
       ],
       "capabilitiesOptions": {
-        "timer_duration": {
+        "meter_timer_duration": {
           "preventTag": true
         }
       },
@@ -478,19 +478,7 @@
     }
   ],
   "capabilities": {
-    "text": {
-      "type": "string",
-      "title": {
-        "en": "-"
-      },
-      "getable": true,
-      "setable": true,
-      "uiComponent": "sensor",
-      "uiQuickAction": false,
-      "icon": "/assets/capabilities/text.svg",
-      "insights": false
-    },
-    "timer_duration": {
+    "meter_timer_duration": {
       "type": "number",
       "title": {
         "en": "Duration",
@@ -501,7 +489,19 @@
       "units": "ms",
       "uiComponent": "sensor",
       "uiQuickAction": false,
-      "icon": "/assets/capabilities/timer_duration.svg",
+      "icon": "/assets/capabilities/meter_timer_duration.svg",
+      "insights": false
+    },
+    "text": {
+      "type": "string",
+      "title": {
+        "en": "-"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/capabilities/text.svg",
       "insights": false
     },
     "timer_state": {

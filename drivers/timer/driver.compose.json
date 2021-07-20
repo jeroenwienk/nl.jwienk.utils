@@ -5,9 +5,9 @@
     "nl": "Timer"
   },
   "class": "other",
-  "capabilities": ["timer_duration", "timer_state"],
+  "capabilities": ["meter_timer_duration", "timer_state"],
   "capabilitiesOptions": {
-    "timer_duration": {
+    "meter_timer_duration": {
       "preventTag": true
     }
   },

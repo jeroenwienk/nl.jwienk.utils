@@ -7,15 +7,20 @@ const TimerDriver = require('./driver');
 class TimerDevice extends Homey.Device {
   async onInit() {
     this.log('TimerDevice has been initialized');
+    await this.migrate();
+
     const settings = this.getSettings();
 
     this.timerTimeout = null;
     this.timerInterval = null;
 
-    this.durationUpdateInterval = settings.duration_update_interval;
+    this.durationUpdateInterval =
+      settings.duration_update_interval != null
+        ? settings.duration_update_interval
+        : 1000;
 
     this.state = this.getCapabilityValue('timer_state');
-    this.duration = this.getCapabilityValue('timer_duration');
+    this.duration = this.getCapabilityValue('meter_timer_duration');
     this.durationEnd = null;
 
     // todo could try to recover after restart
@@ -24,12 +29,22 @@ class TimerDevice extends Homey.Device {
       this.duration = 0;
 
       this.setCapabilityValue('timer_state', this.state);
-      this.setCapabilityValue('timer_duration', this.duration);
+      this.setCapabilityValue('meter_timer_duration', this.duration);
     }
 
     this.triggerTimerEnd = this.homey.flow.getDeviceTriggerCard(
       TimerDriver.flow.trigger_timer_end
     );
+  }
+
+  async migrate() {
+    if (this.hasCapability('timer_duration') === true) {
+      await this.removeCapability('timer_duration');
+    }
+
+    if (this.hasCapability('meter_timer_duration') === false) {
+      await this.addCapability('meter_timer_duration');
+    }
   }
 
   /**
@@ -84,7 +99,7 @@ class TimerDevice extends Homey.Device {
     this.state = 'running';
 
     await this.setCapabilityValue('timer_state', this.state);
-    await this.setCapabilityValue('timer_duration', this.duration);
+    await this.setCapabilityValue('meter_timer_duration', this.duration);
 
     this.startOrResume();
   }
@@ -98,7 +113,7 @@ class TimerDevice extends Homey.Device {
       this.durationEnd = null;
 
       await this.setCapabilityValue('timer_state', this.state);
-      await this.setCapabilityValue('timer_duration', this.duration);
+      await this.setCapabilityValue('meter_timer_duration', this.duration);
     }
   }
 
@@ -112,7 +127,7 @@ class TimerDevice extends Homey.Device {
       this.durationEnd = Date.now() + this.duration;
 
       await this.setCapabilityValue('timer_state', this.state);
-      await this.setCapabilityValue('timer_duration', this.duration);
+      await this.setCapabilityValue('meter_timer_duration', this.duration);
     }
   }
 
@@ -128,6 +143,7 @@ class TimerDevice extends Homey.Device {
   }
 
   startOrResume() {
+    this.clear();
     this.timerTimeout = this.homey.setTimeout(
       this.timeoutHandler.bind(this),
       this.duration
@@ -148,15 +164,32 @@ class TimerDevice extends Homey.Device {
     this.state = 'idle';
 
     await this.setCapabilityValue('timer_state', this.state);
-    await this.setCapabilityValue('timer_duration', this.duration);
+    await this.setCapabilityValue('meter_timer_duration', this.duration);
     await this.triggerTimerEnd.trigger(this, {}, {});
   }
 
   async intervalHandler() {
     this.duration -= this.durationUpdateInterval;
+
+    const client = this.homey.app.discordBot.client;
+    const channel = await client.channels.fetch('826407389820485632');
+
+    channel
+      .send(
+        `\`\`\`${JSON.stringify(
+          {
+            currentTime: Date.now(),
+            duration: this.duration,
+          },
+          null,
+          2
+        )}\`\`\``
+      )
+      .catch(this.error);
+
     if (this.duration < 0) this.duration = 0;
 
-    await this.setCapabilityValue('timer_duration', this.duration);
+    await this.setCapabilityValue('meter_timer_duration', this.duration);
   }
 
   validate({ duration }) {
