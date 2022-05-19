@@ -5,9 +5,9 @@ const { HomeyAPI } = require('athom-api');
 
 const { DiscordBot } = require('./lib/discord/DiscordBot');
 
-if (process.env.DEBUG === '1') {
-  require('inspector').open(9230, '0.0.0.0', false);
-}
+// if (process.env.DEBUG === '1') {
+//   require('inspector').open(9230, '0.0.0.0', false);
+// }
 
 class UtilsApp extends Homey.App {
   async onInit() {
